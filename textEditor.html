@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>ACE in Action</title>
+<style type="text/css" media="screen">
+    #editor { 
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        /* width: 50% */
+    }
+</style>
+</head>
+<body>
+
+<div id="editor" class = "simple">add $s0,$s1,$s2
+sub $r1,$r2,$r3
+mul s1,s2,s3
+</div>
+<div class = "console">
+    
+</div>
+
+    
+<script src="ace.js" type="text/javascript" charset="utf-8"></script>
+<script>
+    var editor = ace.edit("editor");
+    editor.setTheme("ace/theme/twilight");
+    editor.session.setMode("ace/mode/javascript");
+</script>
+<script src="editor.js" type="text/javascript" charset="utf-8"></script>
+
+</body>
+</html>

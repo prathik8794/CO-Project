@@ -1,34 +1,39 @@
+'use strict'
 let editr = ace.edit('editor');
-let content1  = editor.session.getLine(0);
-
-arrayOfStrings=[];
-
-registers =[];
-memory = [];
+let arrayOfStrings=[]; //<<<-------this will contain the code line by line
+let memory = []; //this is the memory which is 4kB big
 for(let i=0;i<=4096;i++){
     memory[i] = 0;
 }
-for(let i=0;i<=32;i++){
-    registers[i] = 0;
-}
-Registers ={};
+let Registers ={}; //this is all the registers in the risc-v
 initialiseRegisters();
-console.log(Registers);
+document.querySelector('.submitButton')?.addEventListener('click',
+function(){
+    
+    initialiseRegisters();
+    arrayOfStrings =[];
+    memory =[];
+    let content1  = editor.session.getLine(0);
+    let i =0
+    while(content1 !== ""){
+        content1 = editor.session.getLine(i)
+        i++;
+        arrayOfStrings.push(content1);
+    }
+    for(let j=0;j<arrayOfStrings.length;j++){
+        let currIndex =j
+        let regs=returnRegisters(arrayOfStrings[currIndex]);
+        rInstruction(returnFunction(arrayOfStrings[currIndex]),regs[0],regs[1],regs[2]);
+    }
+    console.log(Registers);
+    
+}
+)
 
 
-let i =0
-while(content1 !== ""){
-    content1 = editor.session.getLine(i)
-    i++;
-    arrayOfStrings.push(content1);
-}
-initialiseRegisters();
 //<<--------------------------write testing code after this---------------------->>
-let regs=returnRegisters(arrayOfStrings[1]);
-Registers[regs[1]] =2;
-Registers[regs[2]] = 5;
-rInstruction(returnFunction(arrayOfStrings[1]),regs[0],regs[1],regs[2]);
-console.log(Registers[regs[0]]);
+
+
 
 
 
@@ -110,6 +115,15 @@ function rInstruction(operation, register1,register2,register3){
             break;
         case "sub":
             Registers[register1] = Registers[register2] - Registers[register3];
+            break;
+        case "mul":
+            Registers[register1] = Registers[register2] * Registers[register3];
+            break;
+        case "div":
+            Registers[register1] = Math.floor(Registers[register2] / Registers[register3]);
+            break;
+        case "addi":
+            Registers[register1] = Registers[register2] + parseInt(register3);
             break;
         case "jal":
             break;

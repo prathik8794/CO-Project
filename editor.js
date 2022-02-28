@@ -5,6 +5,7 @@ let memory = []; //this is the memory which is 4kB big
 for(let i=0;i<=4096;i++){
     memory[i] = 0;
 }
+let linePointer = 0;
 let Registers ={}; //this is all the registers in the risc-v
 initialiseRegisters();
 document.querySelector('.submitButton')?.addEventListener('click',
@@ -14,16 +15,24 @@ function(){
     arrayOfStrings =[];
     memory =[];
     let content1  = editor.session.getLine(0);
-    let i =0
-    while(content1 !== ""){
+    let i = 0; 
+    while(i < editor.session.getLength()){
         content1 = editor.session.getLine(i)
         i++;
         arrayOfStrings.push(content1);
     }
-    for(let j=0;j<arrayOfStrings.length;j++){
-        let currIndex =j
+    for(let linePointer=0;linePointer<arrayOfStrings.length;linePointer++){ //--> j changed to linePointer
+        if(arrayOfStrings[linePointer]==="")continue
+        let currIndex =linePointer
+        console.log(linePointer);
         let regs=returnRegisters(arrayOfStrings[currIndex]);
-        rInstruction(returnFunction(arrayOfStrings[currIndex]),regs[0],regs[1],regs[2]);
+        let instruction = returnFunction(arrayOfStrings[currIndex]);
+        if(instruction === 'j'){
+            linePointer = rInstruction(instruction,returnLabel(arrayOfStrings[currIndex]));
+        }
+        else{
+        rInstruction(instruction,regs[0],regs[1],regs[2]);
+        }
     }
     console.log(Registers);
     
@@ -68,9 +77,7 @@ function initialiseRegisters(){
 function returnFunction(s){
     let temp = "";
     for(let i=0;i<s.length;i++){
-        if(i==0){
-            if(s.charAt(i) === "#") return;
-        }
+        if(s.charAt(i) === "#") return;   // changed the format
         if(s.charAt(i)!=" "){
             temp = temp+s.charAt(i);
         }
@@ -78,6 +85,23 @@ function returnFunction(s){
             return temp;
         }
     }
+}
+
+function returnLabel(s){
+        let temp = "";
+        let jIndex = null
+        for(let i=0;i<s.length;i++){
+            if(s.charAt(i)=='j'){
+                jIndex = i;
+                break;
+            }
+        }
+        for(let i=jIndex+2;i<s.length;i++){
+            if(s.charAt(i)!=" "){
+                temp=temp+s.charAt(i);
+            }
+        }
+        return temp;
 }
 
 function returnRegisters(s){
@@ -108,7 +132,7 @@ function returnRegisters(s){
 
 
 
-function rInstruction(operation, register1,register2,register3){
+function rInstruction(operation, register1=null,register2=null,register3=null){
     switch(operation){
         case "add":
             Registers[register1] = Registers[register2]+Registers[register3];
@@ -126,12 +150,27 @@ function rInstruction(operation, register1,register2,register3){
             Registers[register1] = Registers[register2] + parseInt(register3);
             break;
         case "jal":
+            let i = 0;
+            for(i=0;i<arrayOfStrings.length;i++){
+                if(arrayOfStrings[i]==(register1+":")){
+                    break;
+                }
+            }
+            //i --> length of arrayOfStrings or 
             break;
         case "lw":
             break;
         case "sw":
             break;
         case "j":
+            let i = 0;
+            for(i=0;i<arrayOfStrings.length;i++){
+                if(arrayOfStrings[i]==(register1+":")){
+                    break;
+                }
+            }
+            //i --> length of arrayOfStrings or 
+            return i;
             break;
         case "beq":
             break;
@@ -139,13 +178,3 @@ function rInstruction(operation, register1,register2,register3){
             break;
     }
 }
-
-
-
-
-
-
-
-
-
-

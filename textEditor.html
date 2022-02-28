@@ -15,9 +15,14 @@
 </head>
 <body>
 
-<div id="editor" class = "simple">add a0,a1,a2
-sub a1,a0,a2
-mul s1,s2,s3
+<div id="editor" class = "simple">addi t0,t0,7
+j tag
+addi t0,t0,7
+tag:
+mul t0,t0,t0
+j tag2
+tag2:
+mul t0,t0,t0
 </div>
 <div class = "console">
     

@@ -1,43 +1,165 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<title>RISC-V</title>
-<style type="text/css" media="screen">
-    #editor { 
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 100px;
-        /* width: 50% */
-    }
-</style>
+    <title>RISC-V</title>
+    <style type="text/css" media="screen">
+        #editor {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: -1;
+            width: 50%
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid black;
+            border-spacing: 0px;
+            text-align: center;
+        }
+        button {
+            position: absolute;
+            bottom: 0;
+        }
+    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<div id="editor" class = "simple">addi t0,t0,7
-j tag
-addi t0,t0,7
-tag:
-mul t0,t0,t0
-j tag2
-tag2:
-mul t0,t0,t0
-</div>
-<div class = "console">
-    
-</div>
-<button class="submitButton btn">
-    Submit
-</button>
-    
-<script src="ace.js" type="text/javascript" charset="utf-8"></script>
-<script>
-    var editor = ace.edit("editor");
-    editor.setTheme("ace/theme/twilight");
-    editor.session.setMode("ace/mode/javascript");
-</script>
-<script src="editor.js" type="text/javascript" charset="utf-8"></script>
+    <div id="editor" class="simple">addi t0,t0,7
+        j tag
+        addi t0,t0,7
+        tag:
+        mul t0,t0,t0
+        j tag2
+        tag2:
+        mul t0,t0,t0
+    </div>
+    <div class="console">
+
+    </div>
+    <table>
+        <tbody>
+            <tr>
+                <th> Register </th>
+                <th> Value </th>
+                <th> Register </th>
+                <th> Value </th>
+            </tr>
+            <tr></tr>
+            <td> zero (0) </td>
+            <td> 0</td>
+            <td> ra (1) </td>
+            <td> 0</td>
+            </tr>
+            <tr>
+                <td> sp (2) </td>
+                <td> 0</td>
+                <td> gp (3) </td>
+                <td> 0</td>
+            </tr>
+            <tr>
+                <td> tp (4) </td>
+                <td> 0</td>
+                <td> t0 (5) </td>
+                <td> 0</td>
+            </tr>
+            <tr>
+                <td> t1 (6) </td>
+                <td> 0</td>
+                <td> t2 (7) </td>
+                <td> 0</td>
+            </tr>
+            <tr>
+                <td> s0/fp(8) </td>
+                <td> 0</td>
+                <td> s1 (9) </td>
+                <td> 0</td>
+            </tr>
+            <tr>
+                <td> a0 (10)</td>
+                <td> 0</td>
+                <td> a1 (11)</td>
+                <td> 0</td>
+            </tr>
+            <tr>
+                <td> a2 (12)</td>
+                <td> 0</td>
+                <td> a3 (13)</td>
+                <td> 0</td>
+            </tr>
+            <tr>
+                <td> a4 (14)</td>
+                <td> 0</td>
+                <td> a5 (15)</td>
+                <td> 0</td>
+            </tr>
+            <tr>
+                <td> a6 (16)</td>
+                <td> 0</td>
+                <td> a7 (17)</td>
+                <td> 0</td>
+            </tr>
+            <tr>
+                <td> s2 (18)</td>
+                <td> 0</td>
+                <td> s3 (19)</td>
+                <td> 0</td>
+            </tr>
+            <tr>
+                <td> s4 (20)</td>
+                <td> 0</td>
+                <td> s5 (21)</td>
+                <td> 0</td>
+            </tr>
+            <tr>
+                <td> s6 (22)</td>
+                <td> 0</td>
+                <td> s7 (23)</td>
+                <td> 0</td>
+            </tr>
+            <tr>
+                <td> s8 (24)</td>
+                <td> 0</td>
+                <td> s9 (25)</td>
+                <td> 0</td>
+            </tr>
+            <tr>
+                <td> s10 (26)</td>
+                <td> 0</td>
+                <td> s11 (27)</td>
+                <td> 0</td>
+            </tr>
+            <tr>
+                <td> t3 (28)</td>
+                <td> 0</td>
+                <td> t4 (29)</td>
+                <td> 0</td>
+            </tr>
+            <tr>
+                <td> t5 (30)</td>
+                <td> 0</td>
+                <td> t6 (31)</td>
+                <td> 0</td>
+            </tr>
+        </tbody>
+    </table>
+    <button class="submitButton btn">
+        Submit
+    </button>
+
+    <script src="ace.js" type="text/javascript" charset="utf-8"></script>
+    <script>
+        var editor = ace.edit("editor");
+        editor.setTheme("ace/theme/twilight");
+        editor.session.setMode("ace/mode/javascript");
+    </script>
+    <script src="editor.js" type="text/javascript" charset="utf-8"></script>
 
 </body>
+
 </html>

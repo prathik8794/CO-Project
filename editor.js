@@ -9,8 +9,7 @@ let linePointer = 0;
 let Registers ={}; //this is all the registers in the risc-v
 initialiseRegisters();
 document.querySelector('.submitButton')?.addEventListener('click',
-function(){
-    
+function(){    
     initialiseRegisters();
     arrayOfStrings =[];
     memory =[];
@@ -130,8 +129,6 @@ function returnRegisters(s){
 }
 
 
-
-
 function rInstruction(operation, register1=null,register2=null,register3=null){
     switch(operation){
         case "add":
@@ -163,14 +160,14 @@ function rInstruction(operation, register1=null,register2=null,register3=null){
         case "sw":
             break;
         case "j":
-            let i = 0;
-            for(i=0;i<arrayOfStrings.length;i++){
-                if(arrayOfStrings[i]==(register1+":")){
+             let j = 0;
+            for(j=0;j<arrayOfStrings.length;j++){
+                if(arrayOfStrings[j]==(register1+":")){
                     break;
                 }
             }
             //i --> length of arrayOfStrings or 
-            return i;
+            return j;
             break;
         case "beq":
             break;

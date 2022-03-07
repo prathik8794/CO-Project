@@ -1,0 +1,32 @@
+body{
+    background-color: #FAEEE7;
+}
+#editor { 
+    position: absolute;
+    top: 108px;
+    right: 500px;
+    bottom: 200px;
+    left: 0px;
+    /* width: 50% */
+    
+}
+
+.btn-group{
+    position: absolute;
+    top:63px;
+    height:42px;
+    width:67.1%;
+    outline:none;
+    
+}
+.registers{
+    position: absolute;
+    top: 63px;
+    left: 1020px;
+    height: 50px;
+    width:33%;
+    border:2.5px solid black;
+}
+tr{
+    background-color: #F7F7F7;
+}

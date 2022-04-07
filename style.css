@@ -1,0 +1,37 @@
+body{
+    background-color: #FAEEE7;
+}
+#editor { 
+    position: absolute;
+    top: 108px;
+    right: 500px;
+    bottom: 200px;
+    left: 0px;
+    width: 66.5vw;
+    /* width: 50% */
+    
+}
+
+.btn-group{
+    position: relative;
+    top:0vh;
+    height:5vh;
+    /* width:67.1%; */
+    width: 66.5vw;
+    outline:none;
+    margin:1px;
+    
+}
+.registers{
+    position: absolute;
+    top: 63px;
+    /* left: 1020px; */
+    left:66.7vw;
+    height: 50px;
+    width:33%;
+    margin:1px;
+    border:2.5px solid black;
+}
+tr{
+    background-color: #F7F7F7;
+}

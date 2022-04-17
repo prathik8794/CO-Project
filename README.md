@@ -4,8 +4,9 @@
   
 <div>
   <h1 align="left">Computer Organization</h1>
-  <h3 align="left">Project Phase-1</h3>
+  <h3 align="left">Project Phase-2</h3>
   <h3 align="left">RISC-V Simulator</h3>
+  <h3 align="left">Pipelining</h3>
   <h3 align="left">SURYAVARMAN E-CS20B057</h3>
   <h3 align="left">PRATHIK  KULKARNI-CS20B056</h3>
 <!--   <a href ="https://docs.google.com/document/d/1o1RWxAU1V4za4C2QuZ6C4m7E75EWQL4KarMzJMwTWAw/edit?usp=sharing" target="_blank">Link To Documentation</a><br> -->
